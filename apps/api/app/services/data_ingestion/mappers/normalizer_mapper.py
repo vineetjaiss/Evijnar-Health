@@ -9,7 +9,7 @@ from typing import Optional
 
 from ..models import NormalizedPriceNormalizerData, IngestSource
 from ..errors import MapperError, LLMParsingError
-from ...utils.llm_client import get_evijnar_health_ai_client
+from ....utils.llm_client import get_evijnar_health_ai_client
 
 logger = logging.getLogger("evijnar.ingest.normalizer_mapper")
 

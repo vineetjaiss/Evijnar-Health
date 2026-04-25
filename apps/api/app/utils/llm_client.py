@@ -19,8 +19,7 @@ import json
 import logging
 import re
 from copy import deepcopy
-from typing import Any, Optional
-
+from typing import Optional, Dict, Any
 import aioredis
 
 from app.config import settings
@@ -32,7 +31,7 @@ class LLMCache:
     """Redis-backed cache for AI responses."""
 
     def __init__(self, redis_url: Optional[str] = None):
-        self.redis_url = redis_url or getattr(settings, "redis_url", "redis://localhost:6379")
+        self.redis_url = redis_url or settings.redis_url if hasattr(settings, 'redis_url') else "redis://localhost:6379"
         self.redis: Optional[aioredis.Redis] = None
         self.enabled = self.redis_url is not None
 
